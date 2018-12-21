@@ -5,6 +5,7 @@ import * as HighCharts from 'highcharts';
 import { Sicks } from 'src/app/models/sicks.interface';
 
 import { finalize } from 'rxjs/operators';
+import { DataSharedService } from 'src/app/core/dataShared.service';
 
 @Component({
   selector: 'app-home',
@@ -17,10 +18,23 @@ export class HomeComponent implements OnInit {
 
   loading: boolean;
 
-  constructor(private testingService: TestingService) { }
+  dataSearch: any[];
+
+  dataSource: any[];
+
+  displayedColumns: string[] = ['region', 'progreso', 'recibidos', 'probados'];
+
+  constructor(private testingService: TestingService,
+    private dataSharedService: DataSharedService) { }
 
   ngOnInit() {
     this.loading = true;
+
+    this.dataSharedService.currentNumber$.subscribe(value => {
+      this.dataSearch = value
+      this.dataSource = value;
+    });
+
     this.testingService.getSick().pipe(finalize(() => this.loading = false))
       .subscribe(data => {
         this.data = data;
@@ -28,6 +42,9 @@ export class HomeComponent implements OnInit {
         this.chartsOptions = {
           title: {
             text: "Prueba de enfermos en latinoamerica"
+          },
+          xAxis: {
+            categories: data.map( value => value.region)
           },
           yAxis: {
             title: {
@@ -40,7 +57,7 @@ export class HomeComponent implements OnInit {
               data: data.map(value => value.samples_in_progress)
             },
             {
-              name: "Recividos",
+              name: "Recibidos",
               data: data.map(value => value.samples_received)
             },
             {
@@ -57,6 +74,9 @@ export class HomeComponent implements OnInit {
   chartsOptions = {
     title: {
       text: ""
+    },
+    xAxis: {
+
     },
     yAxis: {
 

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 // Libreria para graficacion
 import { HighchartsChartModule } from 'highcharts-angular';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule ({
     declarations: [
@@ -11,7 +12,8 @@ import { HighchartsChartModule } from 'highcharts-angular';
     ],
     imports:[
         CommonModule,
-        HighchartsChartModule
+        HighchartsChartModule,
+        MatTableModule
     ],
     exports: [
         HomeComponent

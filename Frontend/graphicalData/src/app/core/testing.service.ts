@@ -15,4 +15,9 @@ export class TestingService {
   getSick(): Observable<Sicks[]> {
     return this.http.get<Sicks[]>(`${this.path}/testing/regions`);
   }
+
+  getSicksByText(param: string): Observable<Sicks[]>{
+    return this.http.get<Sicks[]>(`${this.path}/testing/regions?hint=${param}`)
+  }
+  
 }

@@ -1,3 +1,8 @@
 <div class="header">
-  <h3>HEADER</h3>
+  <div class="content-search">
+    <label for="search">
+      <input type="text" id="search" class="input-txt" [formControl]="inputSearch">
+    </label>
+    <input type="button" class="input-btn" value="Buscar" (click)="onSearchByText()"/>
+  </div>
 </div>
