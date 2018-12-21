@@ -33,7 +33,7 @@ Accedemos a Mysql Workbench e importamos la BD alojada en el directorio **DB** c
 
 ## Configuración de acceso a los datos
 
-En nuestro IDE de desarrollo abrimos el proyecto alojado en el dir. backend y cambiamos los valores de *spring.datasource.username* y *spring.datasource.password* por un usuario mySQL que generes en tu computadora local.
+En nuestro IDE de desarrollo abrimos el proyecto alojado en el dir. backend y cambiamos los valores de *spring.datasource.username* y *spring.datasource.password* localizados en el archivo *application.properties* por un usuario mySQL que generes en tu computadora local.
 
 ## EJECUCIÓN
 
@@ -46,3 +46,4 @@ Para el proyecto frontend de igual forma nos situamos en el directorio del proye
 *ng serve*
 
 Listo ahora puedes probarlo en el navegador **http://localhost:4200/**
+
